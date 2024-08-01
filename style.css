@@ -1,3 +1,38 @@
 *{
     box-sizing: border-box;
+    background-color: #1b1b1b;
+    color: #FFFFFF;
+}
+
+body{
+    font-family: 'Roboto', Arial;
+    margin: 0;
+    padding: 0;
+}
+
+.title-bar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4e4e4e;
+}
+
+.title-bar > p{
+    background-color: #4e4e4e;
+    margin: 0;
+}
+
+.title-bar > p.flavor{
+    position: absolute;
+    right: 30vw;
+}
+
+p{
+    text-align: center;
+}
+
+.weapon-container{
+    display: flex;
+    justify-content: space-around;
+    padding: 2vw 15vw;
 }
