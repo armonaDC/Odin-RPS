@@ -1,27 +1,15 @@
-console.log("Hello World\n");
-
-let humanPoints = 0;
-let robotPoints = 0;
-
-for(let i = 0; i < 5; i++){
-    let humanChoice = getHumanChoice();
-    let robotChoice = getRobotChoice();
-
-    playRound(humanChoice, robotChoice);
-
-    console.log("\nHuman Points:" + humanPoints);
-    console.log("\nRobot Points:" + robotPoints + "\n");
-}
-
-if(humanPoints == robotPoints){
-    console.log("The game is a tie! :/");
-}
-else if(humanPoints > robotPoints){
-    console.log("You win the game! :)");
-}
-else{
-    console.log("You lost the game! T_T")
-}
+const rockBtn = document.querySelector("button.rock");
+const paperBtn = document.querySelector("button.paper");
+const scissorsBtn = document.querySelector("button.scissors");
+const resetBtn = document.querySelector("button.reset");
+const playerScoreCount = document.querySelector("span.player");
+const robotScoreCount = document.querySelector("span.robot");
+const roundCounter = document.querySelector("span.counter");
+let playerChoice;
+let robotChoice;
+let playerScore = 0;
+let robotScore = 0;
+let round = 1;
 
 function getRobotChoice(){
     let choice = Math.ceil(Math.random() * 3);
@@ -31,40 +19,83 @@ function getRobotChoice(){
     if(choice == 3){return "scissors";}
 }
 
-function getHumanChoice(){
-    const message = "Rock, Paper, or Scissors?";
-    let choice = prompt(message);
-    return choice;
+function checkGameStatus(){
+    if (playerScore >= 5){
+        //stop game and give winning text, force player to use reset button
+    }
+    if(robotScore >= 5){
+        //stop game and give losing text
+    }
 }
 
-function playRound(humanChoice, robotChoice){
-    let human = humanChoice.toLowerCase();
+function playRound(playerChoice, robotChoice){
+    let player = playerChoice.toLowerCase();
     let robot = robotChoice.toLowerCase();
     const win = "You win this round!";
     const lose = "You lose this round!";
     const tie = "It's a tie!";
 
-    if(human == robot){
-        return console.log(tie);
+    if(player == robot){
+        playerScore++;
+        robotScore++;
+        playerScoreCount.textContent = `${playerScore}`;
+        robotScoreCount.textContent = `${robotScore}`;
     }
 
-    else if(human == "paper" && robot == "rock"){
-        humanPoints++;
-        return console.log(win + " " + human + " beats " + robot + "!");
+    else if(player == "paper" && robot == "rock"){
+        playerScore++;
+        playerScoreCount.textContent = `${playerScore}`;
+        robotScoreCount.textContent = `${robotScore}`;
     }
 
-    else if(human == "rock" && robot == "scissors"){
-        humanPoints++;
-        return console.log(win + " " + human + " beats " + robot + "!");
+    else if(player == "rock" && robot == "scissors"){
+        playerScore++;
+        playerScoreCount.textContent = `${playerScore}`;
+        robotScoreCount.textContent = `${robotScore}`;
     }
 
-    else if(human == "scissors" && robot == "paper"){
-        humanPoints++;
-        return console.log(win + " " + human + " beats " + robot + "!");
+    else if(player == "scissors" && robot == "paper"){
+        playerScore++;
+        playerScoreCount.textContent = `${playerScore}`;
+        robotScoreCount.textContent = `${robotScore}`;
     }
 
     else{
-        robotPoints++;
-        return console.log(lose + " " + robot + " beats " + human + "!");
+        robotScore++;
+        playerScoreCount.textContent = `${playerScore}`;
+        robotScoreCount.textContent = `${robotScore}`;
     }
 }
+
+resetBtn.addEventListener("click", () => {
+    playerScore = 0;
+    robotScore = 0;
+    round = 1;
+    playerScoreCount.textContent = `${playerScore}`;
+    robotScoreCount.textContent = `${robotScore}`;
+    roundCounter.textContent = `${round}`;
+})
+
+rockBtn.addEventListener("click", () => {
+    round++;
+    playerChoice = "rock";
+    robotChoice = getRobotChoice();
+    playRound(playerChoice, robotChoice);
+    roundCounter.textContent = `${round}`;
+});
+
+paperBtn.addEventListener("click", () => {
+    round++;
+    playerChoice = "paper";
+    robotChoice = getRobotChoice();
+    playRound(playerChoice, robotChoice);
+    roundCounter.textContent = `${round}`;
+});
+
+scissorsBtn.addEventListener("click", () => {
+    round++;
+    playerChoice = "scissors";
+    robotChoice = getRobotChoice();
+    playRound(playerChoice, robotChoice);
+    roundCounter.textContent = `${round}`;
+});
