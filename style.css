@@ -74,6 +74,13 @@ p{
 button{
     border-style: solid;
     border-color: #1b1b1b;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+button:hover{
+    opacity: 1;
 }
 
 img{
