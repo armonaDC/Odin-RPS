@@ -1,3 +1,22 @@
+/*
+    Fluid Typgraphy formula
+    Source: https://css-tricks.com/snippets/css/fluid-typography/
+    font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])));
+
+    font-size: calc(2rem + (4rem - 2rem) * ((100vw - 50rem) / (1650px - 500px)));
+    font-size: calc(2rem + 20 * ((100vw - 50rem) / (1150)));
+    
+    Notes:
+        root element font size (1 rem): 10px
+        all units must be the same size
+        * divisor must be same units as font size, but without the units expressed
+*/
+
+@keyframes PulseText{
+    from {font-size: calc(1.5rem + 25 * ((100vw - 50rem) / (1150)));} /*40px to 15px*/
+    to {font-size: calc(1.3rem + 22 * ((100vw - 50rem) / (1150)));} /*35px to 13px*/
+}
+
 *{
     box-sizing: border-box;
     background-color: #1b1b1b;
@@ -15,24 +34,57 @@ body{
     align-items: center;
     justify-content: center;
     background-color: #4e4e4e;
+    font-size: calc(2rem + 20 * ((100vw - 50rem) / (1150)));
+    padding: 1.5rem;
 }
 
 .title-bar > p{
     background-color: #4e4e4e;
     margin: 0;
+    padding: 0;
 }
 
 .title-bar > p.flavor{
     position: absolute;
-    right: 30vw;
+    color: yellow;
+    background-color: rgba(0,0,0,0);
+    right: calc(1.8vw + 8.2 * ((100vw - 50rem) / (1150))); /*10vw to 1.8vw*/
+    top: 3rem;
+    rotate: -10deg;
+    animation-name: PulseText;
+    animation-duration: 3s;
+    animation-iteration-count: infinite; /*loops infinitely*/
+    animation-direction: alternate; /*play forward, then reverse*/
+    
 }
 
 p{
+    font-size: calc(2rem + 20 * ((100vw - 50rem) / (1150)));
     text-align: center;
+    margin: 0;
+    padding: 1.5rem;
 }
 
 .weapon-container{
     display: flex;
     justify-content: space-around;
-    padding: 2vw 15vw;
+    padding: 2vw calc(1rem + 240 * ((100vw - 50rem) / (1150))); /*padding left-right scales from 250px to 10px*/
+}
+
+button{
+    border-style: solid;
+    border-color: #1b1b1b;
+}
+
+img{
+    object-fit: contain;
+    height: auto;
+    max-width: 25rem;
+    width: calc(125px + 125 * ((100vw - 50rem) / (1150))); /*width scales from 250px to 125px*/
+}
+
+.score-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 2vw calc(1rem + 240 * ((100vw - 50rem) / (1150))); /*padding left-right scales from 250px to 10px*/
 }
