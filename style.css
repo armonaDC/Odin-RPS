@@ -17,6 +17,26 @@
     to {font-size: calc(1.3rem + 22 * ((100vw - 50rem) / (1150)));} /*35px to 13px*/
 }
 
+@keyframes Win{
+    0% {
+        font-size: calc(7rem + 180 * ((100vw - 50rem) / (1150))); /*250px to 70px*/
+    }
+    25% {
+        font-size: calc(0.5rem + 5 * ((100vw - 50rem) / (1150))); /*10px to 5px*/
+    }
+    50% {
+        transform: rotate(0deg);  
+    }
+    100% {
+        transform: rotate(360deg);    
+    }
+}
+
+@keyframes Lose {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+
 *{
     box-sizing: border-box;
     background-color: #1b1b1b;
@@ -24,7 +44,7 @@
 }
 
 body{
-    font-family: 'Roboto', Arial;
+    font-family: "Roboto", Arial;
     margin: 0;
     padding: 0;
 }
@@ -100,4 +120,35 @@ img{
     display: flex;
     justify-content: space-between;
     padding: 2vw calc(1rem + 240 * ((100vw - 50rem) / (1150))); /*padding left-right scales from 250px to 10px*/
+}
+
+.choice-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 calc(1rem + 240 * ((100vw - 50rem) / (1150))); /*padding left-right scales from 250px to 10px*/
+}
+
+.win{
+    color: rgb(40, 220, 40);
+    background-color: rgba(0,0,0,0);
+    font-family: "Comic Sans MS", 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: calc(7rem + 180 * ((100vw - 50rem) / (1150))); /*250px to 70px*/
+    text-wrap: nowrap;
+    position: absolute;
+    animation: Win;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+
+.lose{
+    color: rgb(220, 40, 40);
+    background-color: rgba(0,0,0,0);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: calc(7rem + 180 * ((100vw - 50rem) / (1150))); /*250px to 70px*/
+    text-wrap: nowrap;
+    position: absolute;
+    animation: Lose;
+    animation-duration: 8s;
+    animation-iteration-count: 1;
 }
