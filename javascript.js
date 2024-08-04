@@ -1,3 +1,4 @@
+"use strict";
 const buttons = document.querySelectorAll("button");
 const playerScoreCount = document.querySelector("span.player");
 const robotScoreCount = document.querySelector("span.robot");
@@ -7,8 +8,8 @@ const robotChoiceElement = document.querySelector(".robot.choice");
 const playSpace = document.querySelector(".weapon-container")
 const winText = document.createElement("p");
 const loseText = document.createElement("p");
-let playerChoice;
-let robotChoice;
+playerChoice = "";
+robotChoice = "";
 let playerScore = 0;
 let robotScore = 0;
 let round = 1;
