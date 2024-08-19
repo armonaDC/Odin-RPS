@@ -152,3 +152,17 @@ img{
     animation-duration: 8s;
     animation-iteration-count: 1;
 }
+
+/*Below is for the footer*/
+footer{
+    background-color: #4e4e4e;
+    padding: calc(0.8rem + 7 * ((100vw - 50rem) / (1150))) 0; /*15px to 8px*/
+    text-align: center;
+}
+
+footer > a{
+    color:#FFFFFF;
+    background-color: #4e4e4e;
+    text-decoration: none;
+    font-size: calc(1rem + 10 * ((100vw - 50rem) / (1150))); /*20px to 10px*/
+}
